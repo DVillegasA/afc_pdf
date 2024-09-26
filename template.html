@@ -1,0 +1,137 @@
+<h2>Estado cuatrimestral</h2>
+<h4>de su Cuenta Individual por Cesant&iacute;a.</h4>
+<h4>periodo del {{fecha_full}}</h4>
+<hr />
+<p>SR(A): {{user_name}} - {{user_rut}}</p>
+<p>{{user_address}}</p>
+<h4>1. Saldo Inicial</h4>
+<table style="border-collapse: collapse; width: 100%; height: 18px;" border="1">
+<tbody>
+<tr style="height: 18px;">
+<td style="width: 60%; height: 18px;">Al {{fecha_inicial}}</td>
+<td style="width: 40%; text-align: right; height: 18px;"><strong>(1) </strong>$ {{saldo_inicial}}</td>
+</tr>
+</tbody>
+</table>
+<h4>2. Ingresos</h4>
+<table style="border-collapse: collapse; width: 100%; height: 36px;" border="1">
+<tbody>
+<tr style="height: 18px;">
+<td style="width: 25%; height: 18px;">Total de cotizaciones</td>
+<td style="width: 25%; height: 18px;">Otros ingresos</td>
+<td style="width: 25%; height: 18px;">Ganancia</td>
+<td style="width: 25%; height: 18px;"><strong>Total Ingresos (2)</strong></td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 25%; text-align: right; height: 18px;">{{total_cotizaciones}}</td>
+<td style="width: 25%; text-align: right; height: 18px;">{{otros_ingresos}}</td>
+<td style="width: 25%; text-align: right; height: 18px;">{{total_ganancias}}</td>
+<td style="width: 25%; text-align: right; height: 18px;">{{total_ingresos}}</td>
+</tr>
+</tbody>
+</table>
+<h4>3. Egresos</h4>
+<table style="border-collapse: collapse; width: 100%; height: 36px;" border="1">
+<tbody>
+<tr style="height: 18px;">
+<td style="width: 25%; height: 18px;">Total comisiones</td>
+<td style="width: 25%; height: 18px;">Otros egresos</td>
+<td style="width: 25%; height: 18px;">Uso de la Cuenta Individual</td>
+<td style="width: 25%; height: 18px;"><strong>Total Egresos (3)</strong></td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 25%; text-align: right; height: 18px;">{{total_comisiones}}</td>
+<td style="width: 25%; text-align: right; height: 18px;">{{otros_egresos}}</td>
+<td style="width: 25%; text-align: right; height: 18px;">{{uso_cuenta}}</td>
+<td style="width: 25%; text-align: right; height: 18px;">{{total_egresos}}</td>
+</tr>
+</tbody>
+</table>
+<h4>Saldo Final</h4>
+<table style="border-collapse: collapse; width: 100%; height: 18px;" border="1">
+<tbody>
+<tr style="height: 18px;">
+<td style="width: 60%; height: 18px;">Al {{fecha_final}}</td>
+<td style="width: 40%; text-align: right; height: 18px;"><strong>(1+2-3) </strong>$ {{saldo_final}}</td>
+</tr>
+</tbody>
+</table>
+<h4>Detalle de cotizaciones</h4>
+<table style="border-collapse: collapse; width: 100%; height: 234px;" border="1">
+<tbody>
+<tr style="height: 18px;">
+<td style="width: 49.9231%; height: 18px;"><strong>Raz&oacute;n social del empleador</strong></td>
+<td style="width: 20.891%; height: 18px; text-align: center;"><strong>Mes de pago</strong></td>
+<td style="width: 29.1858%; height: 18px; text-align: right;"><strong>Cotizaci&oacute;n mensual</strong></td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 49.9231%; height: 18px;">{{razon_social_1}}</td>
+<td style="width: 20.891%; height: 18px; text-align: center;">{{mes_pago_1}}</td>
+<td style="width: 29.1858%; height: 18px; text-align: right;">$ {{total_pago_1}}</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 49.9231%; height: 18px;">{{razon_social_2}}</td>
+<td style="width: 20.891%; height: 18px; text-align: center;">{{mes_pago_2}}</td>
+<td style="width: 29.1858%; height: 18px; text-align: right;">$ {{total_pago_2}}</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 49.9231%; height: 18px;">{{razon_social_3}}</td>
+<td style="width: 20.891%; height: 18px; text-align: center;">{{mes_pago_3}}</td>
+<td style="width: 29.1858%; height: 18px; text-align: right;">$ {{total_pago_3}}</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 49.9231%; height: 18px;">{{razon_social_4}}</td>
+<td style="width: 20.891%; height: 18px; text-align: center;">{{mes_pago_4}}</td>
+<td style="width: 29.1858%; height: 18px; text-align: right;">$ {{total_pago_4}}</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 49.9231%; height: 18px;">{{razon_social_5}}</td>
+<td style="width: 20.891%; height: 18px; text-align: center;">{{mes_pago_5}}</td>
+<td style="width: 29.1858%; height: 18px; text-align: right;">$ {{total_pago_5}}</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 49.9231%; height: 18px;">{{razon_social_6}}</td>
+<td style="width: 20.891%; height: 18px; text-align: center;">{{mes_pago_6}}</td>
+<td style="width: 29.1858%; height: 18px; text-align: right;">$ {{total_pago_6}}</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 49.9231%; height: 18px;">{{razon_social_7}}</td>
+<td style="width: 20.891%; height: 18px; text-align: center;">{{mes_pago_7}}</td>
+<td style="width: 29.1858%; height: 18px; text-align: right;">$ {{total_pago_7}}</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 49.9231%; height: 18px;">{{razon_social_8}}</td>
+<td style="width: 20.891%; height: 18px; text-align: center;">{{mes_pago_8}}</td>
+<td style="width: 29.1858%; height: 18px; text-align: right;">$ {{total_pago_8}}</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 49.9231%; height: 18px;">{{razon_social_9}}</td>
+<td style="width: 20.891%; height: 18px; text-align: center;">{{mes_pago_9}}</td>
+<td style="width: 29.1858%; height: 18px; text-align: right;">$ {{total_pago_9}}</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 49.9231%; height: 18px;">{{razon_social_10}}</td>
+<td style="width: 20.891%; height: 18px; text-align: center;">{{mes_pago_10}}</td>
+<td style="width: 29.1858%; height: 18px; text-align: right;">$ {{total_pago_10}}</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 49.9231%; height: 18px;">{{razon_social_11}}</td>
+<td style="width: 20.891%; height: 18px; text-align: center;">{{mes_pago_11}}</td>
+<td style="width: 29.1858%; height: 18px; text-align: right;">$ {{total_pago_11}}</td>
+</tr>
+<tr style="height: 18px;">
+<td style="width: 49.9231%; height: 18px;">{{razon_social_12}}</td>
+<td style="width: 20.891%; height: 18px; text-align: center;">{{mes_pago_12}}</td>
+<td style="width: 29.1858%; height: 18px; text-align: right;">$ {{total_pago_12}}</td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: right;">&nbsp;</p>
+<table style="border-collapse: collapse; width: 39.1654%; height: 21px;" border="1">
+<tbody>
+<tr>
+<td style="width: 26.8817%; text-align: left;"><strong>Total</strong></td>
+<td style="width: 111.027%; text-align: right;">$ {{total_cotizacion}}</td>
+</tr>
+</tbody>
+</table>
