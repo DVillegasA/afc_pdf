@@ -1,3 +1,5 @@
+import os
+from argparse import ArgumentParser
 import jinja2
 import pdfkit
 import pandas as pd
@@ -140,16 +142,18 @@ def generate_file(df_main_data, df_cotiz_data, df_user_data, range_start, range_
             'total_cotizacion': total_cotizacion,
         }
 
-        template_loader = jinja2.FileSystemLoader('./')
+        template_loader = jinja2.FileSystemLoader(os.getcwd())
         template_env = jinja2.Environment(loader=template_loader)
 
         template = template_env.get_template("template.html")
         output_text = template.render(context)
 
         config = pdfkit.configuration(wkhtmltopdf="/usr/bin/wkhtmltopdf")
-        pdfkit.from_string(output_text, f"output_files/test_cvillegas_{i}.pdf", configuration=config)
+        output_file_name = f"test_cvillegas_{i}.pdf"
+        output_file_path = os.path.join("output_files", output_file_name)
+        pdfkit.from_string(output_text, output_file_path, configuration=config)
 
-        reader = PdfReader(f"output_files/test_cvillegas_{i}.pdf")
+        reader = PdfReader(output_file_path)
         writer = PdfWriter()
         password, _ = user_rut = df_user_data.iloc[0]['rut'].split('-')
         password = password.replace('.', '')
@@ -159,8 +163,19 @@ def generate_file(df_main_data, df_cotiz_data, df_user_data, range_start, range_
 
         writer.encrypt(password)
 
-        with open(f"output_files/test_cvillegas_{i}.pdf", "wb") as f:
+        with open(output_file_path, "wb") as f:
             writer.write(f)
+
+parser = ArgumentParser(description="Demo de generación de PDFs para la AFC.")
+parser.add_argument(
+    'total_iteration', 
+    metavar='N', 
+    help="Cantidad de documentos a ser generados. Por defecto genera 100.", 
+    type=int
+)
+
+args = parser.parse_args()
+total_iteration = args.total_iteration
 
 df_main_data = pd.read_csv('afc_bruto.csv', index_col=0)
 df_cotiz_data = pd.read_csv('afc_cotiz.csv', index_col=0)
@@ -169,7 +184,6 @@ df_user_data = pd.read_csv('afc_user.csv', index_col=0)
 df_main_data['fecha_inicial'] = pd.to_datetime(df_main_data['fecha_inicial'], format="%Y%m%d")
 df_cotiz_data['mes_pago'] = pd.to_datetime(df_cotiz_data['mes_pago'], format="%Y%m")
 
-total_iteration = 10000
 rango_paralelo = [(int(i*total_iteration/cpu_count()), int((i+1)*total_iteration/cpu_count())) for i in range(0,cpu_count())]
 
 print(f"Cantidad de documentos a generar: {total_iteration}")
