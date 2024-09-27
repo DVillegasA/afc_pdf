@@ -8,7 +8,7 @@ import calendar
 from joblib import Parallel, delayed, cpu_count
 from PyPDF2 import PdfReader, PdfWriter
 
-def generate_file(df_main_data, df_cotiz_data, df_user_data, range_start, range_end):
+def generate_file(wk_location, df_main_data, df_cotiz_data, df_user_data, range_start, range_end):
     calendario = {
         1: "Enero",
         2: "Febrero",
@@ -148,7 +148,7 @@ def generate_file(df_main_data, df_cotiz_data, df_user_data, range_start, range_
         template = template_env.get_template("template.html")
         output_text = template.render(context)
 
-        config = pdfkit.configuration(wkhtmltopdf="/usr/bin/wkhtmltopdf")
+        config = pdfkit.configuration(wkhtmltopdf=wk_location)
         output_file_name = f"test_cvillegas_{i}.pdf"
         output_file_path = os.path.join("output_files", output_file_name)
         pdfkit.from_string(output_text, output_file_path, configuration=config)
@@ -168,6 +168,12 @@ def generate_file(df_main_data, df_cotiz_data, df_user_data, range_start, range_
 
 parser = ArgumentParser(description="Demo de generación de PDFs para la AFC.")
 parser.add_argument(
+    'wk_location',
+    metavar='wkhtmltopdf',
+    help="Ubicación en disco del programa wkhtmltopdf.",
+    type=str
+)
+parser.add_argument(
     'total_iteration', 
     metavar='N', 
     help="Cantidad de documentos a ser generados. Por defecto genera 100.", 
@@ -176,6 +182,7 @@ parser.add_argument(
 
 args = parser.parse_args()
 total_iteration = args.total_iteration
+wk_location = args.wk_location
 
 df_main_data = pd.read_csv('afc_bruto.csv', index_col=0)
 df_cotiz_data = pd.read_csv('afc_cotiz.csv', index_col=0)
@@ -188,4 +195,4 @@ rango_paralelo = [(int(i*total_iteration/cpu_count()), int((i+1)*total_iteration
 
 print(f"Cantidad de documentos a generar: {total_iteration}")
 
-Parallel(n_jobs=-1)(delayed(generate_file)(df_main_data, df_cotiz_data, df_user_data, j[0], j[1]) for j in rango_paralelo)
+Parallel(n_jobs=-1)(delayed(generate_file)(wk_location, df_main_data, df_cotiz_data, df_user_data, j[0], j[1]) for j in rango_paralelo)
